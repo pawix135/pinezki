@@ -1,0 +1,80 @@
+Wielka dokumentacja pinezek
+Paweł Bul
+2019-02-22
+
+printContent():
+  - brak danych wejsciowych
+  - pobiera dane json z pliku poprzez ajax
+  - dla każdego obrazu wyswietla: div->figure->img->input
+  - wyświetla dla kazdego obrazka piny
+  - brak danych wyjsciowych
+  - Wyświetla zawartość
+
+getJsonData(imageId):
+  - dane wejsciowe:
+    - (string) imageId - id obrazu
+  - wybiera inputa z jsonem
+
+  - dane wyjsciowe:
+    - null: (string) "Nie ma takiego obrazu"
+    - undefined: (string) "Nie ma takiego obrazu"
+    - default: (json) json przed parsem
+
+getHolder(imageId):
+  - dane wejsciowe:
+    - (string) imageId - id obrazu
+  - dane wyjsciowe: zwraca (div) holder gdzie jest obraz, figure itd
+
+getInput(imageId):
+  - dane wejsciowe:
+    - (string) imageId - id obrazu
+    - (input) zwraca input od (json) danych
+
+getPinById(imageId, pinId):
+  - dane wejsciowe:
+    - (string) imageId - id obrazu gdzie znajduje sie pin
+    - (string) pinId - id pinu
+  - dane wyjsciowe: zwraca (div) pinezke o podanym id
+
+addNewPin(imageId, newPinId, newPinX, newPinY, newPinText):
+  - dane wejscowe:
+    - (string) imageId - id obrazu do ktorego chcemy dodac pin
+    - (string) newPinId - id nowego pinu
+    - (float) newPinX - odleglosc w procentach od lewej strony obrazu
+    - (float) newPinY - odleglosc w procentach od gory obrazu
+    - (string) newPinText - tekst obrazka
+  - szuka inputa z danymi poprzez getInput(imageId)
+  - push nowego obiektu do danych
+  - zapisanie nowych danych do inputa
+  - brak danych wyjsciowych
+
+editPin(imageId, pinId, pinX, pinY, pinText):
+  - dane wejsciowe:
+    - (string) imageId - id obrazu w ktorym znajduje sie pin do edycji
+    - (string) pinId - id pinu ktory chcemy edytowac
+    - (float) pinX - stara/nowa odleglosc w procentach od lewej strony obrazu
+    - (float) pinY - stara/nowa odleglosc w procentach od gory obrazu
+    - (string) pinText - start/nowy tekst obrazka
+  - w tablicy "pinezki" szuka pinezki z id === pinId
+  - gdy znajdzie pinezke to zamienia jego dane
+  - zapisauje dane do inputa
+  - brak danych wyjsciowych
+
+removePin(imageId, pinId):
+  - dane wejscowe:
+    - (string) imageId - id obrazu gdzie bedzie szukany pin
+    - (string) pinId - id pinu ktory chcemy usunac
+  - szuka w tablicy "pinezki" pinezki z id === pinId
+  - jesli znajdzie to usuwa pinezke z ekranu i objektu
+  - zapisauje dane do inputa
+  - brak danych wyjsciowych
+
+editingButtons(option):
+  - dane wejsciowe:
+    - (string) option - tryb w jakim ma sie wyswietlac przyciski
+  - mozliwosci:
+    - start - Przycisk dodania jest aktywny, reszta zablokowana
+    - addButton - Wszystkie przyciski sa zablokowane
+    - pinEdit - Przycisk dodania jest zablokowany, a reszta aktywna
+  - dodaje/usuwa klase by zablokowac mozliwosc klikania w przycisk
+  - brak danych wyjsciowych
