@@ -14,8 +14,8 @@
       } */
 
       .pins{
-        width: 15px;
-        height: 15px;
+        width: 20px;
+        height: 20px;
         background-color: rgb(164, 25, 25);
         border-radius: 50%;
         transform: translate(-50%, -50%);
